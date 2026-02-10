@@ -1,2 +1,4 @@
 pandas
 dotenv
+websocket-client
+threading
