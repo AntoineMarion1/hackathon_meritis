@@ -1,4 +1,6 @@
 pandas
-dotenv
+python-dotenv
 websocket-client
-threading
+dash
+plotly
+requests
