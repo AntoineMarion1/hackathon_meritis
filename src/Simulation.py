@@ -48,20 +48,20 @@ def trading_bot(bot: Bot):
     global simulation_running, simulation_paused
     while simulation_running:
         if simulation_paused:
-            time.sleep(0.5)
+            time.sleep(0.2)
             continue
-        if (not price_queue.empty()):
-            price = price_queue.get(timeout=1)
-            print(f"Bot reçoit le prix : {price}")
-            # Ici, logique de trading
-            if bot is not None:
-                bot.post_order()
-            else:
-                print("Bot non défini")
-  
+
+        try:
+            msg = price_queue.get(timeout=1)
+        except Exception:
+            continue
+
+        # Filtre: on veut seulement les ticks
+        if isinstance(msg, dict) and msg.get("type") == "TICK":
+            bot.on_tick(msg)
 
 # ---------------- Clavier ----------------
-def keyboard_listener(sim: Simulation):
+def keyboard_listener(sim: "Simulation"):
     """
     Touche 'p' pour pause/reprise, 'q' pour arrêter
     """

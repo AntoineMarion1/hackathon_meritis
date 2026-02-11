@@ -1,4 +1,4 @@
-from simulation import Simulation
+from Simulation import Simulation
 from bot import Bot
 
 if __name__ == '__main__':

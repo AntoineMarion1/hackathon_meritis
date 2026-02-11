@@ -302,5 +302,5 @@ if __name__ == "__main__":
     # 1) Backtest simple (params Bot par défaut)
     run_backtest()
 
-    # 2) Optimisation (décommente si besoin)
+    # 2) Optimisation 
     # grid_search_fast(top_k=10, top_n_refit=30)
